@@ -1,0 +1,78 @@
+\documentclass[12pt,a4paper,oneside]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[russian]{homework}
+
+\begin{document}
+\homework
+{Математика. Домашняя работа \No~42}%
+{Ивановым Иваном}%
+{1 сентября 2016}%
+
+\begin{definitions}
+\DefineNaturalNumberSet
+\DefineNaturalNumberSetWithIndex
+\DefineNChooseK
+\end{definitions}
+
+\begin{problem}{\S7 \No250 (2)}
+
+\Statement
+Найдите наибольший элемент последовательности:
+\begin{equation}
+a_n = \frac n {n^2+9}, n \in \nset
+\end{equation}
+
+\Solution
+Пусть $f(x)$~--- функция действительного числа:
+$$
+f(x) = \frac x {x^2+9}, x \in \rset
+$$
+Найдем $x$, при котором $f(x)$ принимает наибольшее значение. Для этого возьмем её производную:
+\begin{align*}
+f'(x) &= \frac{1\times(x^2+9)-x\times2x}{(x^2+9)^2} \\
+f'(x) &= \frac{9-x^2}{(x^2+9)^2}
+\end{align*}
+И приравняем её к нулю:
+\begin{align*}
+\frac{9-x^2}{(x^2+9)^2} &= 0 \\
+9-x^2 &= 0 \\
+x^2 &= 9 \\
+x &= \pm 3
+\end{align*}
+Следовательно, $x = -3$~--- точка минимума $f$, а $x = 3$~--- её точка максимума.
+Следовательно, $x = 3$ также является точкой максимума $a_n$.
+$$
+a_3 = \frac 3 {3^2+9} = \frac 3 {18} = \frac 1 6
+$$
+
+\Answer
+Наибольший элемент последовательности~--- $a_3 = \frac 1 6$.
+
+\end{problem}
+\begin{problem}{Задача про $\comb_n^k$}
+
+\Statement
+Докажите, что
+$$
+{n \choose 0} + {n \choose 1} + \cdots + {n \choose n} = 2^n
+$$
+
+\Proof
+Бином Ньютона:
+$$
+(x+1)^n = \sum_{k=1}^n {n \choose k} x^k
+$$
+Подставим $x = 1$:
+\begin{align*}
+(1+1)^n = \sum_{k=1}^n {n \choose k} 1^k
+2^n = \sum_{k=1}^n {n \choose k}
+\end{align*}
+\QED
+
+\end{problem}
+
+\end{document}

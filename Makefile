@@ -14,24 +14,23 @@ endif
 TTPCOMPILE	:= $(strip $(TTP) $(TTPFLAGS))
 
 
-$(PDF:pdf/%.pdf=%):
-	@mkdir -pv $(dir pdf/$@) 2>/dev/null
-	@mkdir -pv $(dir out/$@) 2>/dev/null
-	cd tex; $(TTPCOMPILE) -output-directory $(dir out/$@) $(@:%=%.tex)
-	ln -f out/$@ pdf/$@
-
 print_vars:
 	@echo PDF = $(PDF)
 	@echo SOURCES  = $(SOURCES)
-	@echo DEPENDS = $(DEPENDS)
 	@echo UNDEF_VARS = $(UNDEF_VARS)
 	@echo TTPCOMPILE = $(TTPCOMPILE)
+
+$(PDF:pdf/%.pdf=%):
+	@mkdir -pv $(dir pdf/$@) 2>/dev/null
+	@mkdir -pv $(dir out/$@) 2>/dev/null
+	cd tex; $(TTPCOMPILE) -output-directory $(dir ../out/$@) $(@:%=%.tex)
+	ln -f out/$@.pdf pdf/$@.pdf
 
 clean:
 	rm -rf out pdf
 
 $(PDF:pdf/%.pdf=view-%):
-	chromium $(@:view-%:pdf/%.pdf)
+	chromium $(@:view-%=pdf/%.pdf)
 
 dist: clean
 	tar -zcvf /tmp/$(PWD).tar.gz .

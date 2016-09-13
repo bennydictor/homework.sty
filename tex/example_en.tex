@@ -1,0 +1,76 @@
+\documentclass[12pt,a4paper,oneside]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[english]{babel}
+\usepackage{homework}
+
+\begin{document}
+\homework
+{Mathematics. Homework \No~42}%
+{John Smith}%
+{September 1\textsuperscript{st} 2016}%
+
+\begin{definitions}
+\DefineNaturalNumberSet
+\DefineNaturalNumberSetWithIndex
+\DefineNChooseK
+\end{definitions}
+
+\begin{problem}{\S7 \No250 (2)}
+
+\Statement
+Find the largest element of the sequence:
+\begin{equation}
+a_n = \frac n {n^2+9}, n \in \nset
+\end{equation}
+
+\Solution
+Let $f(x)$ be function of a real number:
+$$
+f(x) = \frac x {x^2+9}, x \in \rset
+$$
+We'll find $x$, for which $f(x)$ is minimal. To do that, take it's derivative:
+\begin{align*}
+f'(x) &= \frac{1\times(x^2+9)-x\times2x}{(x^2+9)^2} \\
+f'(x) &= \frac{9-x^2}{(x^2+9)^2}
+\end{align*}
+Now set the derivative to zero:
+\begin{align*}
+\frac{9-x^2}{(x^2+9)^2} &= 0 \\
+9-x^2 &= 0 \\
+x^2 &= 9 \\
+x &= \pm 3
+\end{align*}
+Hence, $x = -3$ is a local minimum of $f$, and $x = 3$~--- it's local maximum.
+$x = 3$ is also a local maximun of $a_n$.
+$$
+a_3 = \frac 3 {3^2+9} = \frac 3 {18} = \frac 1 6
+$$
+
+\Answer
+The largest element of the sequence is $a_3 = \frac 1 6$.
+
+\end{problem}
+\begin{problem}{A problem about $\comb_n^k$}
+
+\Statement
+Prove that
+$$
+{n \choose 0} + {n \choose 1} + \cdots + {n \choose n} = 2^n
+$$
+
+\Proof
+Binomial theorem:
+$$
+(x+1)^n = \sum_{k=1}^n {n \choose k} x^k
+$$
+Set $x = 1$:
+\begin{align*}
+(1+1)^n = \sum_{k=1}^n {n \choose k} 1^k
+2^n = \sum_{k=1}^n {n \choose k}
+\end{align*}
+\QED
+
+\end{problem}
+
+\end{document}

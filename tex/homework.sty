@@ -48,13 +48,6 @@
 \renewcommand{\labelenumii}{\theenumii}
 \renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 
-\if@russian
-    \renewcommand{\le}{\leqslant}
-    \renewcommand{\ge}{\geqslant}
-    \renewcommand{\leq}{\leqslant}
-    \renewcommand{\geq}{\geqslant}
-\fi
-
 \parindent=0pt
 \parskip=1ex
 
@@ -62,28 +55,45 @@
 
 % -- Useful macros
 
-\newcommand{\zset}{\mathbb Z}
 \newcommand{\nset}{\mathbb N}
+\newcommand{\zset}{\mathbb Z}
+\newcommand{\qset}{\mathbb Q}
 \newcommand{\rset}{\mathbb R}
-\newcommand{\impl}{\rightarrow}
+\newcommand{\cset}{\mathbb C}
+\DeclareMathOperator{\comb}{C}
+\newcommand{\impl}{\mathbin{\rightarrow}}
+\newcommand{\No}{№}
 
 \if@russian
+    \ifthenelse{\isundefined{\tg}}{\DeclareMathOperator{\tg}{tg}}{}
+    \ifthenelse{\isundefined{\ctg}}{\DeclareMathOperator{\ctg}{ctg}}{}
+
+    \renewcommand{\times}{\cdot}
+    \renewcommand{\le}{\leqslant}
+    \renewcommand{\ge}{\geqslant}
+    \renewcommand{\leq}{\leqslant}
+    \renewcommand{\geq}{\geqslant}
+    \renewcommand{\tan}{\tg}
+    \renewcommand{\cot}{\ctg}
+
     \newcommand{\DefineNaturalNumberSet}{\item $\nset = \{1, 2, \ldots\}$ - множество натуральных чисел}
     \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - множество натуральных чисел, но начиная с $i$}
-    \newcommand{\DefineIntegerNumberSet}{\item $\zset = \{\ldots, -1, 0, 1, \ldots\}$ - множество целых чисел}
+
+    \newcommand{\QED}{Что и требовалось доказать.}
 
     \newtheorem{statement}{Утверждение}
     \newtheorem*{statement*}{Утверждение}
 \else
     \newcommand{\DefineNaturalNumberSet}{\item $\nset = \{1, 2, \ldots\}$ - set of natural numbers}
     \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - set of natural numbers, but starting with $i$}
-    \newcommand{\DefineIntegerNumberSet}{\item $\zset = \{\ldots, -1, 0, 1, \ldots\}$ - set of integer numbers}
+
+    \newcommand{\QED}{Which is what had to be shown.}
 
     \newtheorem{statement}{Statement}
     \newtheorem*{statement*}{Statement}
 \fi
 
-\newcommand{\DefineNChooseK}{\item ${n \choose k} = \mathop{\mathrm C}^n_k = \frac{n!}{k!(n-k)!}$}
+\newcommand{\DefineNChooseK}{\item $\displaystyle{n \choose k} = \comb_n^k = \frac{n!}{k!(n-k)!}$}
 
 % -- End of useful macros
 
@@ -132,6 +142,7 @@
 \def\kw@Statement{Условие}
 \def\kw@Proof{Доказательство}
 \def\kw@Solution{Решение}
+\def\kw@Answer{Ответ}
 \def\kw@Doneby{Выполнена}
 \def\kw@Page{Страница}
 \def\kw@of{из}
@@ -139,6 +150,7 @@
 \def\kw@Definitions{Definitions}
 \def\kw@Statement{Statement}
 \def\kw@Proof{Proof}
+\def\kw@Answer{Answer}
 \def\kw@Solution{Solution}
 \def\kw@Doneby{Done by}
 \def\kw@Page{Page}
@@ -166,9 +178,11 @@
 \nopagebreak\par\afterproblemsectioncaption}
 }
 
+\createsection{\Definitions}{\kw@Definitions}
 \createsection{\Statement}{\kw@Statement}
 \createsection{\Proof}{\kw@Proof}
 \createsection{\Solution}{\kw@Solution}
+\createsection{\Answer}{\kw@Answer}
 
 % -- End of problem sections
 
@@ -206,6 +220,12 @@
     \problemend%
 }
 
+\newenvironment{localdefinitions}[0]{
+    \Definitions
+    \begin{itemize}
+}{%
+    \end{itemize}
+}
 % -- End of definitions environment --
 
 \if@russian
@@ -214,7 +234,7 @@
 \newcommand{\thehomeworkdate}{Когда-то}
 \else
 \newcommand{\thehomeworkname}{Homework}
-\newcommand{\thehomeworkauthor}{Me}
+\newcommand{\thehomeworkauthor}{Someone}
 \newcommand{\thehomeworkdate}{Once upon a time}
 \fi
 
