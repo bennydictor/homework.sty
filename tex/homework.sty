@@ -55,7 +55,7 @@
     \renewcommand{\tan}{\tg}
     \renewcommand{\cot}{\ctg}
 
-    \newcommand{\DefineNaturalNumberSet}{\item $\nset = \{1, 2, \ldots\}$ - множество натуральных чисел}
+    \newcommand{\DefineNaturalNumberSet}[1][1]{\item $\nset = \{#1, \ldots\}$ - множество натуральных чисел}
     \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - множество натуральных чисел, но начиная с $i$}
 
     \newcommand{\QED}{Что и требовалось доказать.}
@@ -63,7 +63,7 @@
     \newtheorem{statement}{Утверждение}
     \newtheorem*{statement*}{Утверждение}
 \else
-    \newcommand{\DefineNaturalNumberSet}{\item $\nset = \{1, 2, \ldots\}$ - set of natural numbers}
+    \newcommand{\DefineNaturalNumberSet}[1][1]{\item $\nset = \{#1, \ldots\}$ - set of natural numbers}
     \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - set of natural numbers, but starting with $i$}
 
     \newcommand{\QED}{Which is what had to be shown.}
@@ -219,7 +219,7 @@
 
 \DeclareRobustCommand{\homeworkname}{\thehomeworkname\par\kw@Doneby\ \thehomeworkauthor\unskip, \thehomeworkdate}
 
-\DeclareRobustCommand{\homework}[4]{
+\DeclareRobustCommand{\homework}[3]{
     \renewcommand{\thehomeworkname}{#1}
     \renewcommand{\thehomeworkauthor}{#2}
     \renewcommand{\thehomeworkdate}{#3}
