@@ -1,0 +1,260 @@
+% TeX style for homework
+% Based on olymp.sty
+% 
+% Copyright (c) 2005-2013 Olymp.sty Developers Group.
+% Copyright (c) 2016 Michael Sorokin
+% 
+% See https://github.com/GassaFM/olymp.sty/blob/master/AUTHORS
+% for the complete list of authors of olymp.sty.
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+
+\ProvidesPackage{homework}
+
+\usepackage{ifthen}
+\usepackage{enumitem}
+
+% -- Process options --
+
+\newif\if@russian\@russianfalse
+
+\DeclareOption{russian}{
+    \@russiantrue
+}
+\ProcessOptions\relax
+
+% End of process options
+
+% -- Style changes
+
+\setlist{leftmargin=*}
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+
+\if@russian
+    \renewcommand{\le}{\leqslant}
+    \renewcommand{\ge}{\geqslant}
+    \renewcommand{\leq}{\leqslant}
+    \renewcommand{\geq}{\geqslant}
+\fi
+
+\parindent=0pt
+\parskip=1ex
+
+% -- End of style changes
+
+% -- Useful macros
+
+\newcommand{\zset}{\mathbb Z}
+\newcommand{\nset}{\mathbb N}
+\newcommand{\rset}{\mathbb R}
+\newcommand{\impl}{\rightarrow}
+
+\if@russian
+    \newcommand{\DefineNaturalNumberSet}{\item $\nset = \{1, 2, \ldots\}$ - множество натуральных чисел}
+    \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - множество натуральных чисел, но начиная с $i$}
+    \newcommand{\DefineIntegerNumberSet}{\item $\zset = \{\ldots, -1, 0, 1, \ldots\}$ - множество целых чисел}
+
+    \newtheorem{statement}{Утверждение}
+    \newtheorem*{statement*}{Утверждение}
+\else
+    \newcommand{\DefineNaturalNumberSet}{\item $\nset = \{1, 2, \ldots\}$ - set of natural numbers}
+    \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - set of natural numbers, but starting with $i$}
+    \newcommand{\DefineIntegerNumberSet}{\item $\zset = \{\ldots, -1, 0, 1, \ldots\}$ - set of integer numbers}
+
+    \newtheorem{statement}{Statement}
+    \newtheorem*{statement*}{Statement}
+\fi
+
+\newcommand{\DefineNChooseK}{\item ${n \choose k} = \mathop{\mathrm C}^n_k = \frac{n!}{k!(n-k)!}$}
+
+% -- End of useful macros
+
+% -- Setup margins --
+
+%---------- From package "lastpage" ------------------
+\def\lastpage@putlabel{\addtocounter{page}{-1}%
+   \immediate\write\@auxout{\string\newlabel{LastPage}{{}{\thepage}}}%
+   \addtocounter{page}{1}}
+\AtEndDocument{\clearpage\lastpage@putlabel}%
+%---------- end of "lastpage" ------------------
+
+\newlength{\thelinewidth}
+
+\ifcase\@ptsize % 10 pt
+    \hoffset=-26.5mm
+    \voffset=-35mm
+    \textheight=250mm
+    \textwidth=175mm
+\or % 11 pt
+    \hoffset=-25mm
+    \voffset=-37.5mm
+    \textheight=255mm
+    \textwidth=175mm
+\or % 12 pt
+    \hoffset=-20mm
+    \voffset=-35mm
+    \textheight=245mm
+    \textwidth=175mm
+\fi
+
+\thelinewidth=\textwidth
+
+% -- End of setup margins --
+
+% -- Setup sizes --
+
+\newlength{\afterproblemhead}
+
+% -- End of setup sizes --
+
+% -- Setup keywords --
+
+\if@russian
+\def\kw@Definitions{Обозначения}
+\def\kw@Statement{Условие}
+\def\kw@Proof{Доказательство}
+\def\kw@Solution{Решение}
+\def\kw@Doneby{Выполнена}
+\def\kw@Page{Страница}
+\def\kw@of{из}
+\else
+\def\kw@Definitions{Definitions}
+\def\kw@Statement{Statement}
+\def\kw@Proof{Proof}
+\def\kw@Solution{Solution}
+\def\kw@Doneby{Done by}
+\def\kw@Page{Page}
+\def\kw@of{of}
+\fi
+
+\afterproblemhead=3mm
+
+\newcommand{\problemheadfont}{\LARGE}
+\newcommand{\problemsectionfont}{\Large}
+\newcommand{\problemend}{\clearpage}
+\newcommand{\problemtextfont}{\normalsize}
+\newcommand{\beforeproblemsectioncaption}{\smallbreak\smallskip}
+\newcommand{\afterproblemsectioncaption}{\smallskip}
+
+% -- End of setup keywords --
+
+% -- Problem sections --
+
+\newcommand{\createsection}{\@newsection}
+
+\def\@newsection#1#2{\DeclareRobustCommand{#1}{
+{\beforeproblemsectioncaption\noindent\bf\problemsectionfont
+\textsf{#2}}
+\nopagebreak\par\afterproblemsectioncaption}
+}
+
+\createsection{\Statement}{\kw@Statement}
+\createsection{\Proof}{\kw@Proof}
+\createsection{\Solution}{\kw@Solution}
+
+% -- End of problem sections
+
+% -- Problem environment --
+
+\newenvironment{problem}[1]{
+    {
+        \noindent
+        \textbf{\problemheadfont\textsf{#1}}%
+        \par\vspace{\afterproblemhead}%
+        \problemtextfont\parindent=6.5mm%
+        \nopagebreak
+    }
+    \problemtextfont
+}{%
+    \problemend%
+}
+
+% -- End of problem environment --
+
+% -- Definitions environment --
+
+\newenvironment{definitions}[0]{
+    {
+        \noindent
+        \textbf{\problemheadfont\textsf{\kw@Definitions}}%
+        \par\vspace{\afterproblemhead}%
+        \problemtextfont\parindent=6.5mm%
+        \nopagebreak
+    }
+    \problemtextfont
+    \begin{itemize}
+}{%
+    \end{itemize}
+    \problemend%
+}
+
+% -- End of definitions environment --
+
+\if@russian
+\newcommand{\thehomeworkname}{Домашняя работа}
+\newcommand{\thehomeworkauthor}{Кем-то}
+\newcommand{\thehomeworkdate}{Когда-то}
+\else
+\newcommand{\thehomeworkname}{Homework}
+\newcommand{\thehomeworkauthor}{Me}
+\newcommand{\thehomeworkdate}{Once upon a time}
+\fi
+
+\DeclareRobustCommand{\homeworkname}{\thehomeworkname\par\kw@Doneby\ \thehomeworkauthor\unskip, \thehomeworkdate}
+
+\DeclareRobustCommand{\homework}[4]{
+    \renewcommand{\thehomeworkname}{#1}
+    \renewcommand{\thehomeworkauthor}{#2}
+    \renewcommand{\thehomeworkdate}{#3}
+}
+
+\makeatletter
+
+\renewcommand{\@oddhead}{
+    \parbox{\textwidth}{
+        \sffamily
+        \begin{center}
+            \protect\homeworkname
+            \\[2pt]
+            \hrule
+        \end{center}
+    }
+}
+
+\renewcommand{\@oddfoot}{
+	{\gdef\thefooter%
+        {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\hfil}}%
+\parbox{\textwidth}{
+    \hrule
+    \vspace{6pt}
+    \sffamily
+    \thefooter
+}
+}
+
+\makeatother
+ 
+\headheight=2cm
+\headsep=6mm
+
+\hfuzz=0.5pt
+
+\sloppy
