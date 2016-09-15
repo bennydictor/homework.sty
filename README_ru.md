@@ -22,6 +22,7 @@ But also, it makes writing down your homework a bit easier.
 \comb_n^k % n choose k
 ```
 * *\impl* - бинарный оператор импликации
+* *\timesdots* - *\ldots* в русской версии, *\cdots* в базовой
 * *\No* - символ №
 * окружения *statement* и *statement*\* - используйте для утверждений, на которые вы будете ссылаться.
 ```tex

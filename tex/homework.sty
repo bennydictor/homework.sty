@@ -48,6 +48,7 @@
     \ifthenelse{\isundefined{\ctg}}{\DeclareMathOperator{\ctg}{ctg}}{}
 
     \renewcommand{\times}{\cdot}
+    \newcommand{\timesdots}{\ldots}
     \renewcommand{\le}{\leqslant}
     \renewcommand{\ge}{\geqslant}
     \renewcommand{\leq}{\leqslant}
@@ -63,6 +64,8 @@
     \newtheorem{statement}{Утверждение}
     \newtheorem*{statement*}{Утверждение}
 \else
+    \newcommand{\timesdots}{\cdots}
+
     \newcommand{\DefineNaturalNumberSet}[1][1]{\item $\nset = \{#1, \ldots\}$ - set of natural numbers}
     \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - set of natural numbers, but starting with $i$}
 

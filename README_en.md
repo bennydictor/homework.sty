@@ -20,6 +20,7 @@ But also, it makes writing down your homework a bit easier.
 \comb_n^k % n choose k
 ```
 * *\impl* - binary operator for implication
+* *\timesdots* - *\ldots* in the russian version, *\ldots* in the base version
 * *\No* - the numero symbol
 * *statement* and *statement*\* environment - use for statements, that you might later refer to:
 ```tex
