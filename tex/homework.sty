@@ -59,7 +59,7 @@
     \newcommand{\DefineNaturalNumberSet}[1][1]{\item $\nset = \{#1, \ldots\}$ - множество натуральных чисел}
     \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - множество натуральных чисел, но начиная с $i$}
 
-    \newcommand{\QED}{Что и требовалось доказать.}
+    \newcommand{\QED}[1][]{Что и требовалось доказать\ifthenelse{\equal{#1}[]}{}{ в #1}.}
 
     \newtheorem{statement}{Утверждение}
     \newtheorem*{statement*}{Утверждение}
@@ -69,7 +69,7 @@
     \newcommand{\DefineNaturalNumberSet}[1][1]{\item $\nset = \{#1, \ldots\}$ - set of natural numbers}
     \newcommand{\DefineNaturalNumberSetWithIndex}{\item $\nset_i = \{i, i+1, \ldots\}$ - set of natural numbers, but starting with $i$}
 
-    \newcommand{\QED}{Which is what had to be shown.}
+    \newcommand{\QED}[1][]{Which is what had to be shown\ifthenelse{\equal{#1}{}}{}{ in #1}.}
 
     \newtheorem{statement}{Statement}
     \newtheorem*{statement*}{Statement}

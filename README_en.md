@@ -50,7 +50,8 @@ the first natural number (the default is 1).
 \end{definitions}
 ```
 * *\DefineNChooseK* - similar to above. This is useful, because there are two ways to write "n choose k".
-* *\QED* - macro, that is replaced with "Which is what had to be shown."
+* *\QED* - macro, that is replaced with "Which is what had to be shown.". If the optional argument is
+provided, it is replaced by "Which is what had to be shown in #1."
 ## Russian only
 * *tg* and *ctg* is more common way to write *tan* and *cot* is Russia. So operators *\tg* and *\ctg* are added.
 Also, *\tan* and *\cot* are replaced by them.
