@@ -30,7 +30,8 @@ There are infinitely many primes. \label{sttm:prime}
 ... but $p$ can't be the last prime (see statement~\ref{sttm:prime}).
 ```
 *statement* is numbered, *statement*\* is not.
-* *\homework* - put right after *\begin{document}*. It has three requred arguments - the name of the homework, the author and the date.
+* *\homework* - put right after *\begin{document}*.
+It has three arguments - the name of the homework, the author (required) and the date (optional, *\today* by default).
 * *problem* environment - put every problem inside this environment. It has one required argument - the name of the problem.
 * *\Definitions*, *\Statement*, *\Proof*, *\Solution* and *\Answer* - put this before respective part of your problem.
 * *definitions* environment - put your definitions here. *Every defenition should start with \item*.
@@ -55,6 +56,10 @@ provided, it is replaced by "Which is what had to be shown in #1."
 
 ## Russian only
 
+* *\asbuk\* * - enumerate label with cyrillic letters.
+```tex
+\begin{enumerate}[label=\asbuk*]
+```
 * *tg* and *ctg* is more common way to write *tan* and *cot* is Russia. So operators *\tg* and *\ctg* are added.
 Also, *\tan* and *\cot* are replaced by them.
 * *\leq* and *\geq* looks the accepted way in Russia.

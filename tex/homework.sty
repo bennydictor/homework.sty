@@ -47,6 +47,8 @@
     \ifthenelse{\isundefined{\tg}}{\DeclareMathOperator{\tg}{tg}}{}
     \ifthenelse{\isundefined{\ctg}}{\DeclareMathOperator{\ctg}{ctg}}{}
 
+    \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
+
     \renewcommand{\times}{\cdot}
     \newcommand{\timesdots}{\ldots}
     \renewcommand{\le}{\leqslant}
@@ -222,13 +224,15 @@
 
 \DeclareRobustCommand{\homeworkname}{\thehomeworkname\par\kw@Doneby\ \thehomeworkauthor\unskip, \thehomeworkdate}
 
-\DeclareRobustCommand{\homework}[3]{
+\newcommand{\homework}[2]{%
+  \@ifnextchar({\homework@i{#1}{#2}}{\homework@i{#1}{#2}({\today})}%
+}
+
+\def\homework@i#1#2(#3){%
     \renewcommand{\thehomeworkname}{#1}
     \renewcommand{\thehomeworkauthor}{#2}
     \renewcommand{\thehomeworkdate}{#3}
 }
-
-\makeatletter
 
 \renewcommand{\@oddhead}{
     \parbox{\textwidth}{
