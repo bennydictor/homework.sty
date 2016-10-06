@@ -242,6 +242,7 @@
     }
 }
 
+\@ifpackageloaded{hyperref}{
 \renewcommand{\@oddfoot}{
 	{\gdef\thefooter%
         {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\hfil}}%
@@ -250,6 +251,18 @@
     \vspace{6pt}
     \sffamily
     \thefooter
+}
+}
+}{
+\renewcommand{\@oddfoot}{
+	{\gdef\thefooter%
+        {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref*{LastPage}\hfil}}%
+\parbox{\textwidth}{
+    \hrule
+    \vspace{6pt}
+    \sffamily
+    \thefooter
+}
 }
 }
 
