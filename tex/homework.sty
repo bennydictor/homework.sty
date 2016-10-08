@@ -245,7 +245,7 @@
 \@ifpackageloaded{hyperref}{
 \renewcommand{\@oddfoot}{
 	{\gdef\thefooter%
-        {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\hfil}}%
+        {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref*{LastPage}\hfil}}%
 \parbox{\textwidth}{
     \hrule
     \vspace{6pt}
@@ -256,7 +256,7 @@
 }{
 \renewcommand{\@oddfoot}{
 	{\gdef\thefooter%
-        {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref*{LastPage}\hfil}}%
+        {{\hfil}\kw@Page\ \thepage\ \kw@of\ \pageref{LastPage}\hfil}}%
 \parbox{\textwidth}{
     \hrule
     \vspace{6pt}
